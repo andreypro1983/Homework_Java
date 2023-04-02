@@ -5,19 +5,25 @@ import java.util.List;
 public class Homework3 {
     public static void main(String[] args) {
         System.out.println("Задача1");
-        
-        ArrayList<Integer> numberList = new ArrayList<>(List.of(1, 3, 5, 3, 4, 5, 2, 6, 7, 8, 3, 33, 22, 1, 0));
-        ArrayList<Integer> numberList1 = new ArrayList<>(numberList);
 
-        System.out.println("Вариант1");
+        ArrayList<Integer> numberList = new ArrayList<Integer>(List.of(1, 3, 5, 3, 4, 5, 2, 6, 7, 8, 3, 33, 22, 1, 0));
+        ArrayList<Integer> numberList1 = new ArrayList<Integer>(numberList);
+
+        System.out.println("Вариант1: удалить элементы с четным значением из списка");
 
         System.out.println(numberList);
         removeEvenNumber(numberList);
 
-        System.out.println("Вариант2");
+        System.out.println("Вариант2: удалить элементы с четным индексом из списка");
 
         System.out.println(numberList1);
-        removeEvenNumber1(numberList1);
+        removeEvenIndexNumber(numberList1);
+
+        // System.out.println("Тест");
+
+        // removeEvenTestNumber(numberList2);
+
+        // removeEvenNumberTest(numberList3);
 
         System.out.println("Задача2");
 
@@ -41,23 +47,29 @@ public class Homework3 {
         System.out.println(strings1);
         removeIntegers1(strings1);
         System.out.println(strings1); // [string, my_string]
+
     }
 
     static void removeEvenNumber(List<Integer> numbers) {
         // TODO: 31.03.2023 Удалить все четные элементы из списка
-        Iterator<Integer> iterator = numbers.iterator();
-        while (iterator.hasNext()) {
-            int next = iterator.next();
-            if (next % 2 == 0) {
-                iterator.remove();
-            }
-        }
+        numbers.removeIf(s -> (s % 2) == 0);
         System.out.println(numbers);
     }
 
-    static void removeEvenNumber1(List<Integer> numbers) {
+    static void removeEvenIndexNumber(List<Integer> numbers) {
         // TODO: 31.03.2023 Удалить все четные элементы из списка
-        numbers.removeIf(s -> (s % 2 == 0));
+        Iterator<Integer> iterator = numbers.iterator();
+        boolean isEven = true;
+        while (iterator.hasNext()) {
+            iterator.next();
+            if (isEven) {
+                iterator.remove();
+                isEven = false;
+            } else {
+                isEven = true;
+            }
+
+        }
         System.out.println(numbers);
     }
 
