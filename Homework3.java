@@ -19,12 +19,6 @@ public class Homework3 {
         System.out.println(numberList1);
         removeEvenIndexNumber(numberList1);
 
-        // System.out.println("Тест");
-
-        // removeEvenTestNumber(numberList2);
-
-        // removeEvenNumberTest(numberList3);
-
         System.out.println("Задача2");
 
         List<String> strings = new ArrayList<>();
