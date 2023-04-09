@@ -15,6 +15,7 @@ public class Homework5 {
         System.out.println(isCorrectParentheses("][]")); // false
         System.out.println(isCorrectParentheses("[]{<()[]<>>}")); // true
         System.out.println(isCorrectParentheses("")); // false
+        System.out.println(isCorrectParentheses("bg")); // false
     }
 
     /**
@@ -27,7 +28,6 @@ public class Homework5 {
         // Открывающуюся скобку вносим в Deque (insertFirst)
         // Если встретилась закрывающаяся скобка, то (Deque#pollFirst) и сравниваем ее с
         // встретившейся
-        
         if ((parentheses.length() % 2 != 0) || (parentheses.length() == 0)) {
             return false;
         } else {
@@ -39,12 +39,14 @@ public class Homework5 {
             hashMap.put('>', '<');
             Deque<Character> stack = new ArrayDeque<>();
             for (int i = 0; i < listChars.length; i++) {
-                if (!hashMap.containsKey(listChars[i])) {
+                if (hashMap.containsValue(listChars[i])) {
                     stack.addFirst(listChars[i]);
-                } else {
+                } else if ((hashMap.containsKey(listChars[i]))) {
                     if ((stack.size() > 0) && (hashMap.get(listChars[i]) != stack.pollFirst())) {
                         return false;
                     }
+                } else {
+                    return false;
                 }
             }
             return true;
