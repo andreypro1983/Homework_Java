@@ -27,15 +27,16 @@ public class Homework5 {
         // Открывающуюся скобку вносим в Deque (insertFirst)
         // Если встретилась закрывающаяся скобка, то (Deque#pollFirst) и сравниваем ее с
         // встретившейся
-        Map<Character, Character> hashMap = new HashMap<>();
-        hashMap.put(']', '[');
-        hashMap.put('}', '{');
-        hashMap.put(')', '(');
-        hashMap.put('>', '<');
-        char[] listChars = parentheses.toCharArray();
-        if ((listChars.length % 2 != 0) || (listChars.length == 0)) {
+        
+        if ((parentheses.length() % 2 != 0) || (parentheses.length() == 0)) {
             return false;
         } else {
+            char[] listChars = parentheses.toCharArray();
+            Map<Character, Character> hashMap = new HashMap<>();
+            hashMap.put(']', '[');
+            hashMap.put('}', '{');
+            hashMap.put(')', '(');
+            hashMap.put('>', '<');
             Deque<Character> stack = new ArrayDeque<>();
             for (int i = 0; i < listChars.length; i++) {
                 if (!hashMap.containsKey(listChars[i])) {
